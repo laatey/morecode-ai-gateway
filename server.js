@@ -116,8 +116,8 @@ async function chooseUpstream(body, headers, signal) {
 }
 
 const server = http.createServer(async (req, res) => {
-  if (!sameKey(requestKey(req))) return send(res, 401, { error: { message: 'Invalid gateway key' } })
   if (req.method === 'GET' && req.url === '/health') return send(res, 200, { status: 'healthy', upstreams: upstreams.length })
+  if (!sameKey(requestKey(req))) return send(res, 401, { error: { message: 'Invalid gateway key' } })
   if (req.method !== 'POST' || req.url !== '/v1/messages') return send(res, 404, { error: { message: 'Not found' } })
 
   const abort = new AbortController()

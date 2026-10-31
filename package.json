@@ -4,7 +4,9 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "prepare": "node -e \"const fs = require('fs'); fs.mkdirSync('node_modules', { recursive: true }); fs.writeFileSync('node_modules/.keep', '');\"",
+    "postinstall": "node -e \"const fs = require('fs'); fs.mkdirSync('node_modules', { recursive: true }); fs.writeFileSync('node_modules/.keep', '');\""
   },
   "engines": {
     "node": ">=22"
